@@ -131,8 +131,8 @@ elif [[ "$mode" == "d" ]]; then
     echo "Deleting output, error, and slurm files..."
     for ((i=start; i<finish; i+=step)); do
         # Define the files to delete
-        output_file="${name}.${i}.o*"
-        error_file="${name}.${i}.e*"
+        output_file=$(ls "${name}.${i}".o* 2>/dev/null)
+        error_file=$(ls "${name}.${i}".e* 2>/dev/null)
         slurm_file="${name}.${i}.slurm"
 
         # Remove the files
