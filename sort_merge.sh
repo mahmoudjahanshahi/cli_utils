@@ -1,8 +1,8 @@
 #!/bin/bash
 
-# Function to display usage for sort_merge
+# Function to display usage
 usage() {
-    echo "Usage: $0 [-t total_files] [-f first_index] [-s step_size] [sort_options] filename"
+    echo "Usage: $0 filename [-t total_files] [-f first_index] [-s step_size] [sort_options]"
     echo "  filename      : The base name of the files to merge."
     echo "  -t total_files: The total number of files to merge (default: 128)."
     echo "  -f first_index: The first index of the files (default: 0)."
