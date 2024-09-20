@@ -128,19 +128,23 @@ if [[ "$mode" == "r" ]]; then
 
 # Mode 'd': Delete output, error, and slurm files
 elif [[ "$mode" == "d" ]]; then
-    echo "Deleting output, error, and slurm files..."
-    for ((i=start; i<finish; i+=step)); do
-        # Define the files to delete
-        output_file=$(ls "${name}.${i}".o* 2>/dev/null)
-        error_file=$(ls "${name}.${i}".e* 2>/dev/null)
-        slurm_file="${name}.${i}.slurm"
+    read -p "Are you sure you want to delete the output, error, and slurm files? (y/n): " confirm
+    if [[ "$confirm" == "y" || "$confirm" == "Y" ]]; then
+        for ((i=start; i<finish; i+=step)); do
+            # Define the files to delete
+            output_file=$(ls "${name}.${i}".o* 2>/dev/null)
+            error_file=$(ls "${name}.${i}".e* 2>/dev/null)
+            slurm_file="${name}.${i}.slurm"
 
-        # Remove the files
-        rm -f "$output_file"
-        rm -f "$error_file"
-        rm -f "$slurm_file"
-    done
-    echo "Files deleted."
+            # Remove the files
+            rm -f "$output_file"
+            rm -f "$error_file"
+            rm -f "$slurm_file"
+        done
+        echo "Files deleted."
+    else
+        echo "Deletion canceled."
+    fi
 
 else
     echo "Invalid mode selected."
