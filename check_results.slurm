@@ -117,9 +117,11 @@ if [[ "$mode" == "r" ]]; then
         hours=$((average_time / 3600))
         minutes=$(( (average_time % 3600) / 60 ))
         seconds=$((average_time % 60))
+        echo "$(date +"%Y-%m-%d %H:%M") - $name"
         echo "Total files finished: $completed_steps"
         echo "No errors were found."
         echo "Average processing time per file: ${hours} hours, ${minutes} minutes, and ${seconds} seconds"
+        echo
     elif [[ $errors_found -gt 0 ]]; then
         echo "$errors_found error(s) were found during processing. Please review the log."
     else
