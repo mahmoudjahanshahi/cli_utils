@@ -33,7 +33,7 @@ while (<STDIN>) {
     
     # Calculate the output file index
     my $file_index = (hex($hash_prefix) % $num_files);
-    my $file_name = sprintf("%s.%d.s", $file_prefix, $file_index);
+    my $file_name = sprintf("%s.%d", $file_prefix, $file_index);
 
     # Open the output file handle if it isn't already opened
     if (!exists $file_handles{$file_index}) {
