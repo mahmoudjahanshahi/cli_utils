@@ -42,7 +42,7 @@ for i in {$i..$((i+step-1))}; do
 
     t2=\$(date +%s)
     elapsed=\$(date -d@\$(( t2 - t1 )) -u +%H" hours and "%M" minutes.")
-    echo "finished $name.$i in \$elapsed"
+    echo "finished \$i in \$elapsed"
 done
 
 t2=\$(date +%s)
