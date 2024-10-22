@@ -79,8 +79,8 @@ if [[ "$mode" == "r" ]]; then
                             
                             # Extract the hours and minutes using a regular expression
                             if [[ $line =~ ([0-9]+)\ hours\ and\ ([0-9]+)\ minutes ]]; then
-                                hours=${BASH_REMATCH[1]}
-                                minutes=${BASH_REMATCH[2]}
+                                hours=$((10#${BASH_REMATCH[1]}))
+                                minutes=$((10#${BASH_REMATCH[2]}))
                                 seconds=$((hours * 3600 + minutes * 60))
 
                                 # Add to total time and increment completed steps counter
