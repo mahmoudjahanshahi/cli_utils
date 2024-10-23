@@ -3,12 +3,11 @@
 # Function to display usage
 usage() {
     echo "Usage: $0 filename [-t total_files] [-f first_index] [-s step_size] [-m mode]"
-    echo "  filename      : The base name of the files to merge."
-    echo "  -t total_files: The total number of files to merge (default: 128)."
+    echo "  filename      : The base name of the files."
+    echo "  -t total_files: The total number of files (default: 128)."
     echo "  -f first_index: The first index of the files (default: 0)."
     echo "  -s step_size  : The step size for indexing files (default: 1)."
-    echo "  -m mode   : Mode of operation (r: check results, d: delete files, default: r)"
-    echo "  -H            : Display this help message."
+    echo "  -m mode       : Mode of operation (r: check results, d: delete files, default: r)"
     exit 1
 }
 
@@ -19,7 +18,7 @@ fi
 
 # Set the name from the first positional argument
 name="$1"
-shift # Shift arguments so that getopts can handle the remaining options
+shift 
 
 # Default values
 start=0
