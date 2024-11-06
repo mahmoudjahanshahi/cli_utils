@@ -6,7 +6,7 @@ usage() {
     echo "  filename      : The base name of the files."
     echo "  -t total_files: The total number of files (default: 128)."
     echo "  -f first_index: The first index of the files (default: 0)."
-    echo "  -s step_size  : The step size for indexing files (default: 1)."
+    echo "  -s step_size  : The step size for indexing files (default: 4)."
     echo "  -m mode       : Mode of operation (r: check results, d: delete files, default: r)"
     exit 1
 }
@@ -23,7 +23,7 @@ shift
 # Default values
 start=0
 total=128
-step=1
+step=4
 mode="r"
 
 # Parse command-line options
