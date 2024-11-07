@@ -38,7 +38,7 @@ t0=\$(date +%s)
 for i in {$i..$((i+step-1))}; do
     t1=\$(date +%s)
 
-    ***CODE HERE***
+$(cat ./job.sh)
 
     t2=\$(date +%s)
     elapsed=\$(date -d@\$(( t2 - t1 )) -u +%H" hours and "%M" minutes.")
