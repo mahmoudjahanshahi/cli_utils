@@ -41,8 +41,8 @@ for i in {$i..$((i+step-1))}; do
 $(cat ./job.sh)
 
     t2=\$(date +%s)
-    elapsed=\$(date -d@\$(( t2 - t1 )) -u +%H" hours and "%M" minutes.")
-    echo "finished \$i in \$elapsed"
+    elapsed=\$(( t2 - t1 ))
+    echo "finished \$i in \$elapsed seconds."
 done
 
 t2=\$(date +%s)

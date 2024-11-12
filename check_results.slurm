@@ -77,10 +77,8 @@ if [[ "$mode" == "r" ]]; then
                             step_tracker[$step_number]=$((step_tracker[$step_number] + 1))
                             
                             # Extract the hours and minutes using a regular expression
-                            if [[ $line =~ ([0-9]+)\ hours\ and\ ([0-9]+)\ minutes ]]; then
-                                hours=$((10#${BASH_REMATCH[1]}))
-                                minutes=$((10#${BASH_REMATCH[2]}))
-                                seconds=$((hours * 3600 + minutes * 60))
+                            if [[ $line =~ ([0-9]+)\ seconds ]]; then
+                                seconds=$((10#${BASH_REMATCH[1]}))
 
                                 # Add to total time and increment completed steps counter
                                 total_time=$((total_time + seconds))
