@@ -13,7 +13,7 @@ finish=$((start + total))
 n=$((step * threads))
 if [[ $partition == "short" ]]; then 
     t=3
-    ntask=12
+    ntask=$(( 60 / $threads ))
 else 
     t=24
     ntask=48
