@@ -10,7 +10,6 @@ Key Features:
 - Saves the extracted text to a 'data' directory, with each key corresponding to a file (e.g., key.txt).
 - If multiple URLs share the same key, their contents are appended to the same file, separated by the URL.
 - Handles timeout errors with a fallback delay.
-- Uses the default Playwright browser User-Agent for better compatibility and to reduce detection.
 
 Usage:
   echo "key1 http://example.com" | ./fetch_page_playwright.py
@@ -30,9 +29,8 @@ import os
 import time
 from playwright.sync_api import sync_playwright, TimeoutError
 
-def fetch_page_text(page, url, user_agent):
+def fetch_page_text(page, url):
     try:
-        page.set_user_agent(user_agent)
         page.goto(url, wait_until='domcontentloaded', timeout=10000)
     except TimeoutError:
         time.sleep(5)
@@ -45,7 +43,6 @@ def main():
 
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=True)
-        user_agent = browser.user_agent
         page = browser.new_page()
 
         for line in sys.stdin:
@@ -58,7 +55,7 @@ def main():
             key, url = parts
 
             try:
-                text_content = fetch_page_text(page, url, user_agent)
+                text_content = fetch_page_text(page, url)
                 out_path = os.path.join(output_dir, f"{key}.txt")
                 with open(out_path, "a", encoding="utf-8") as f:
                     f.write(f"===== URL: {url} =====\n")
