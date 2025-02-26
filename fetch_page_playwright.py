@@ -31,7 +31,9 @@ from playwright.sync_api import sync_playwright, TimeoutError
 
 def fetch_page_text(page, url):
     try:
-        page.goto(url, wait_until='domcontentloaded', timeout=10000)
+        page.goto(url, wait_until='load', timeout=30000)
+        page.wait_for_load_state('networkidle', timeout=30000)
+
     except TimeoutError:
         time.sleep(5)
 
